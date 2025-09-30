@@ -1,6 +1,6 @@
 Custom Chatbot using GPT-2
 
-📌 Project Description – 
+📌 Project Description 
 
 This project is about building and fine-tuning a chatbot model using the GPT-2 language model. We trained it on a dataset of conversational text and then used it to generate human-like replies.
 
