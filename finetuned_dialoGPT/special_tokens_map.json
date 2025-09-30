@@ -1,0 +1,24 @@
+"root":{4 items
+"bos_token":{5 items
+"content":string"<|endoftext|>"
+"lstrip":boolfalse
+"normalized":booltrue
+"rstrip":boolfalse
+"single_word":boolfalse
+}
+"eos_token":{5 items
+"content":string"<|endoftext|>"
+"lstrip":boolfalse
+"normalized":booltrue
+"rstrip":boolfalse
+"single_word":boolfalse
+}
+"pad_token":string"<|endoftext|>"
+"unk_token":{5 items
+"content":string"<|endoftext|>"
+"lstrip":boolfalse
+"normalized":booltrue
+"rstrip":boolfalse
+"single_word":boolfalse
+}
+}
