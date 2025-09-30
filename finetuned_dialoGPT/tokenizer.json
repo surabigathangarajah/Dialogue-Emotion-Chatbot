@@ -1,0 +1,38 @@
+"root":{9 items
+"version":string"1.0"
+"truncation":NULL
+"padding":NULL
+"added_tokens":[1 item
+0:{...}7 items
+]
+"normalizer":NULL
+"pre_tokenizer":{4 items
+"type":string"ByteLevel"
+"add_prefix_space":boolfalse
+"trim_offsets":booltrue
+"use_regex":booltrue
+}
+"post_processor":{4 items
+"type":string"ByteLevel"
+"add_prefix_space":booltrue
+"trim_offsets":boolfalse
+"use_regex":booltrue
+}
+"decoder":{4 items
+"type":string"ByteLevel"
+"add_prefix_space":booltrue
+"trim_offsets":booltrue
+"use_regex":booltrue
+}
+"model":{9 items
+"type":string"BPE"
+"dropout":NULL
+"unk_token":NULL
+"continuing_subword_prefix":string""
+"end_of_word_suffix":string""
+"fuse_unk":boolfalse
+"byte_fallback":boolfalse
+"ignore_merges":boolfalse
+"vocab":{...}4950 items
+}
+}
