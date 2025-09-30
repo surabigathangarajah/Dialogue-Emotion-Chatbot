@@ -1,67 +1,95 @@
-EmoChatBot
+Custom Chatbot using GPT-2
 
-A simple chatbot built using GPT-2 and trained on an emotional dialogue dataset.
-The model is capable of generating human-like conversational responses and attempts to capture emotions from dialogues.
+📌 Project Description – 
 
-🚀 Features
+This project is about building and fine-tuning a chatbot model using the GPT-2 language model. We trained it on a dataset of conversational text and then used it to generate human-like replies.
 
-Trained on an emotional conversations dataset.
+🔹 Methods and Techniques Used
+1. Data Preparation
 
-Uses GPT-2 architecture with fine-tuning.
+We started with a text dataset containing dialogues/conversations.
 
-Supports interactive chatting in the notebook.
+We tokenized the text using Hugging Face’s GPT-2 tokenizer, which converts words into token IDs (numbers) that the model can understand.
 
-Basic conversation flow with improved coherence using training data.
+We padded sequences with special tokens so that all inputs had the same length.
 
-📂 Project Structure
-├── dataset/                # Dataset files (CSV with dialogues)  
-├── training/               # Training scripts  
-├── models/                 # Saved fine-tuned model  
-├── chatbot_interactive.py  # Chatbot interactive script  
-├── requirements.txt        # Dependencies  
-└── README.md               # Project description  
+Finally, we created PyTorch Datasets and DataLoaders to organize the data into batches (mini-groups of training samples).
 
-⚙️ Installation
+2. Model Setup
 
-Clone the repository:
+We used GPT2LMHeadModel (GPT-2 with a language modeling head).
 
-git clone https://github.com/your-username/EmoChatBot.git
-cd EmoChatBot
+Model architecture:
 
+Embedding layers for word tokens and positional encodings
 
-Install dependencies:
+Transformer blocks (multi-head attention + feed-forward layers)
 
-pip install -r requirements.txt
+Layer normalization and dropout for regularization
 
+A final linear layer (lm_head) to predict the next token
 
-Run the chatbot:
+The model was loaded with pretrained GPT-2 weights from Hugging Face.
 
-python chatbot_interactive.py
+3. Training Process
 
-📊 Training
+We trained the model using PyTorch.
 
-The chatbot was fine-tuned using PyTorch and Hugging Face Transformers.
-Steps followed:
+Loss Function: CrossEntropyLoss (measures how well the model predicts the next token).
 
-Preprocessed conversations into tokenized format.
+Optimizer: AdamW (a variant of Adam optimizer, good for transformers).
 
-Created train, validation, and test splits.
+Learning Rate: A small value (like 5e-5) to ensure stable fine-tuning.
 
-Fine-tuned GPT-2 for 2 epochs.
+Epochs: The dataset was repeated multiple times (epochs) to improve learning.
 
-Saved trained model for chatbot inference.
+During training, we observed the Average Loss decreasing (e.g., from ~2.06 to ~1.76). Lower loss = better learning.
 
-💬 Example Usage
-You: Hello  
-Chatbot: Hi, how are you?  
+4. Saving the Model
 
-You: I’m feeling sad today.  
-Chatbot: I’m sorry to hear that. I hope things get better soon.  
+After training, we saved the model files:
 
-🔮 Future Improvements
+config.json – model configuration
 
-Train on a larger and more diverse dataset.
+generation_config.json – text generation settings
 
-Add emotion classification layer for better emotional understanding.
+model.safetensors – trained model weights
 
-Deploy as a web app with Flask or Streamlit.
+These files can be reloaded anytime to continue training or use the chatbot.
+
+5. Text Generation / Chatbot
+
+For interaction, we used the generate() method from Hugging Face.
+
+We applied decoding strategies:
+
+Top-k sampling: pick the most likely k words (e.g., k=50).
+
+Top-p sampling (nucleus sampling): pick words until their probability mass ≥ p (e.g., p=0.95).
+
+Temperature scaling: controls creativity/randomness (lower = safe, higher = more creative).
+
+We built a simple chatbot loop where the user types a message and the model generates a reply.
+
+🔹 Key Techniques Used
+
+Natural Language Processing (NLP)
+
+Transformers & GPT-2
+
+Fine-tuning pretrained models
+
+PyTorch for training and batching
+
+Sampling techniques (top-k, top-p, temperature)
+
+Model saving and reloading
+
+🔹 Limitations
+
+The dataset was relatively small → chatbot sometimes gave unrelated answers.
+
+GPT-2 is not specialized for dialogues (unlike GPT-3/ChatGPT).
+
+More training data and epochs would improve results.
+
