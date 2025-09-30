@@ -1,0 +1,16 @@
+"root":{12 items
+"add_bos_token":boolfalse
+"add_prefix_space":boolfalse
+"added_tokens_decoder":{1 item
+"50256":{...}6 items
+}
+"bos_token":string"<|endoftext|>"
+"clean_up_tokenization_spaces":booltrue
+"eos_token":string"<|endoftext|>"
+"errors":string"replace"
+"extra_special_tokens":{}0 items
+"model_max_length":int1024
+"pad_token":string"<|endoftext|>"
+"tokenizer_class":string"GPT2Tokenizer"
+"unk_token":string"<|endoftext|>"
+}
